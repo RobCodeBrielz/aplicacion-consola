@@ -22,3 +22,17 @@ npm i express --save
 ```
 npm install hbs
 ```
+# Build of production
+* First configure a variable of environment for port, so, we install dotenv for make the variable of environment for aplication of node.
+```
+npm i dotenv
+```
+* Now create a file called ".env" where we put our variable of environment
+
+# Package.json
+* In our file package.json we have that put a script in "scripts" the next line code:
+```
+  "scripts": {
+    "start":"node app.js"
+  }
+```
