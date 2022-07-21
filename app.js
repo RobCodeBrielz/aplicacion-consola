@@ -31,12 +31,29 @@ const app = express();
 // create the variable of manage the port of server
 const port = 8080;
 
+// === USING HBS ===
+// todo: require('hbs')
+app.set('view engine','hbs')
+
+
+// Execute the middleware of express: manage static content
+app.use(express.static('public')) //if the path does not match with the folder name, will search (buscará) through (entre) the controllers created. Remember that folders have higher priority than controllers
+
 // Method or handle by manage the paths of server...
-app.get('/',(req,res)=>{
-    res.send('Hola Mundo')
+// app.get('/',(req,res)=>{
+//     res.send('Hola Mundo')
+// })
+app.get('/',(req,res)=>{ //<-- includes subPaths
+    res.render('home');
+})
+app.get('/generic',(req,res)=>{ //<-- includes subPaths
+    res.sendFile(__dirname + '/public/generic.html') // load the page
+})
+app.get('/elements',(req,res)=>{ //<-- includes subPaths
+    res.sendFile(__dirname + '/public/elements.html') // load the page
 })
 app.get('*',(req,res)=>{ //<-- includes subPaths
-    res.send('Page not found')
+    res.sendFile(__dirname + '/public/404.html') // load the page
 })
 
 // listen is a method that is used by realice of listen of port.

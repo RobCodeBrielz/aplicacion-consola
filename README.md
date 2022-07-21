@@ -16,3 +16,9 @@ npm i express
 or
 npm i express --save
 ```
+
+# Implement handlebars
+* render page but is not recommended, but you too (igualmente) let's see it (vamos a verlo)
+```
+npm install hbs
+```
