@@ -32,8 +32,12 @@ const app = express();
 const port = 8080;
 
 // === USING HBS ===
-// todo: require('hbs')
-app.set('view engine','hbs')
+
+const hbs = require('hbs');
+
+// Handlebars
+app.set('view engine','hbs')//<-- if i use partials in my project i need this line code.
+hbs.registerPartials(__dirname + '/views/partials', (err)=>{console.log(err);}) //<-- if i use partials in my project i need this line code.
 
 
 // Execute the middleware of express: manage static content
@@ -44,7 +48,25 @@ app.use(express.static('public')) //if the path does not match with the folder n
 //     res.send('Hola Mundo')
 // })
 app.get('/',(req,res)=>{ //<-- includes subPaths
-    res.render('home');
+    // we can send arguments from controller utility the second argument of render method
+    res.render('home',{
+        nombre: 'Gabriel Valentin',
+        titulo: 'NodeJS'
+    });
+})
+app.get('/generic',(req,res)=>{ //<-- includes subPaths
+    // we can send arguments from controller utility the second argument of render method
+    res.render('generic',{
+        nombre: 'Gabriel Valentin',
+        titulo: 'NodeJS'
+    });
+})
+app.get('/elements',(req,res)=>{ //<-- includes subPaths
+    // we can send arguments from controller utility the second argument of render method
+    res.render('elements',{
+        nombre: 'Gabriel Valentin',
+        titulo: 'NodeJS'
+    });
 })
 app.get('/generic',(req,res)=>{ //<-- includes subPaths
     res.sendFile(__dirname + '/public/generic.html') // load the page
