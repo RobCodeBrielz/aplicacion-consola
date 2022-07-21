@@ -25,11 +25,12 @@
 
 // import express
 const express = require('express');
+require('dotenv').config();
 
 // create the instance of express in a constant
 const app = express();
 // create the variable of manage the port of server
-const port = 8080;
+const port = process.env.PORT; //<-- variable of environment
 
 // === USING HBS ===
 // todo: require('hbs')
