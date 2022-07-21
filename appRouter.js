@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
 
-router.use('/',(req,res)=>{
-    res.send('index');
+router.get('/home',(req,res)=>{
+    res.render(__dirname + 'public');
 })
 
 module.exports = router;
